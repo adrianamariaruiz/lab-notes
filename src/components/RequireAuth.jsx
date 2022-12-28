@@ -2,11 +2,11 @@
 
 import { useContext } from "react"
 import { Navigate } from "react-router-dom"
-import { userContext } from "../context/UserProvider"
+import { UserContext } from "../context/UserProvider"
 
 const RequireAuth = ({children}) => {
   
-    const {user, setUser} = useContext(userContext)
+    const {user, setUser} = useContext(UserContext)
     if(!user){
         return <Navigate to={'/login'}/>
     }
