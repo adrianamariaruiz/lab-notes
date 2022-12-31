@@ -22,16 +22,13 @@ const Login = () => {
         navegate('/')
     } catch (error) {
         console.log(error.code)
-        setError('firebase', {
-            message: ErroresFirebase(error.code)
-        })
+        const {code, message} = ErroresFirebase(error.code)
+        setError(code, {message})
     }              
 }
 
   return (
     <>
-    <ErrorsForm error={errors.firebase}/>
-
     <form onSubmit={handleSubmit(onSubmit)}>
     <InputForm 
         type="email" 

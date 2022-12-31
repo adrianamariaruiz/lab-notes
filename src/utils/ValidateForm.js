@@ -22,9 +22,9 @@ export const ValidateForm = (getValues) => {
                 return true;
             }
         },
-        validateEquals(getValues) {
+        validateEquals(value) {
             return {
-                equals: val => val === getValues('password') || 'No coinciden las contraseñas'
+                equals: val => val === value || 'No coinciden las contraseñas'
             }
         }
     }
