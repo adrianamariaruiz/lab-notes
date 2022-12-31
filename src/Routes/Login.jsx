@@ -1,8 +1,10 @@
 import { useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
+import Button from '../components/Button'
 import ErrorsForm from '../components/ErrorsForm'
 import InputForm from '../components/InputForm'
+import Title from '../components/Title'
 import { UserContext } from '../context/UserProvider'
 import { ErroresFirebase } from '../utils/ErroresFirebase'
 import { ValidateForm } from '../utils/ValidateForm'
@@ -29,6 +31,7 @@ const Login = () => {
 
   return (
     <>
+    <Title text='Inicio de Sesión'/>
     <form onSubmit={handleSubmit(onSubmit)}>
     <InputForm 
         type="email" 
@@ -50,7 +53,7 @@ const Login = () => {
     />
     <ErrorsForm error={errors.password}/>
 
-    <button type='submit'>Acceder</button>
+    <Button text='Acceder'/>
     </form>
     </>
   )

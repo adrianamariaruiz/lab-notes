@@ -6,6 +6,8 @@ import {ErroresFirebase} from "../utils/ErroresFirebase"
 import {ValidateForm} from "../utils/ValidateForm"
 import ErrorsForm from "../components/ErrorsForm"
 import InputForm from "../components/InputForm"
+import Title from "../components/Title"
+import Button from "../components/Button"
 
 const Register = () => {
 
@@ -34,7 +36,8 @@ const Register = () => {
 
   return (
     <>
-        <h1>Register</h1>
+        <Title text='Registro de Usuario'/>
+        
         <form onSubmit={handleSubmit(onSubmit)}>
             <InputForm 
                 type="email" 
@@ -43,6 +46,7 @@ const Register = () => {
                     required,
                     pattern: patternEmail
                 })}
+                label="Ingreser el email"
             />
             <ErrorsForm error={errors.email}/>
 
@@ -53,6 +57,7 @@ const Register = () => {
                     minLength,
                     validate: validateTrim
                 })}
+                label="Ingreser la contraseña"
             />
             <ErrorsForm error={errors.password}/>
 
@@ -60,10 +65,13 @@ const Register = () => {
                 type="password" 
                 placeholder="confirme el password" 
                 {...register('password2', {
-                    validate: validateEquals(getValues('password'))})}
+                    validate: validateEquals(getValues('password'))})
+                }
+                label="Repita la contraseña"
             />
             <ErrorsForm error={errors.password2}/>
-            <button type="submit">Register</button>
+            <Button text='Registro'/>
+            
         </form>
     </>
   )
