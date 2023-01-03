@@ -4,7 +4,7 @@ import { useContext } from "react"
 import { Navigate } from "react-router-dom"
 import { UserContext } from "../context/UserProvider"
 
-const RequireAuth = ({children}) => {
+const LayoutRequireAuth = ({children}) => {
   
     const {user, setUser} = useContext(UserContext)
     if(!user){
@@ -12,8 +12,10 @@ const RequireAuth = ({children}) => {
     }
 
     return (
-        children
+        <div className="container mx-auto">
+            {children}
+        </div>
   )
 }
 
-export default RequireAuth
+export default LayoutRequireAuth

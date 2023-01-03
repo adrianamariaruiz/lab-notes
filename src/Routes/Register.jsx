@@ -8,6 +8,7 @@ import ErrorsForm from "../components/ErrorsForm"
 import InputForm from "../components/InputForm"
 import Title from "../components/Title"
 import Button from "../components/Button"
+import LoadingSvg from "../components/LoadingSvg"
 
 const Register = () => {
 
@@ -18,6 +19,7 @@ const Register = () => {
     const {register, handleSubmit, formState: {errors}, getValues, setError} = useForm()
     const { registerUser } = useContext(UserContext)
     const navegate = useNavigate()
+    const [loading, setLoading] = useState(false)
     const {required, patternEmail, minLength, validateTrim, validateEquals} = ValidateForm()
 
     // la data es el email y el password
@@ -26,12 +28,15 @@ const Register = () => {
         try {
             await registerUser(data.email, data.password)
             console.log('usuario creado')
+            setLoading(true)
             navegate('/')
         } catch (error) {
             console.log(error.code)
             const {code, message} = ErroresFirebase(error.code)
             setError(code, {message})
-        }              
+        } finally {
+            setLoading(false)
+        }             
     } 
 
   return (
@@ -47,6 +52,7 @@ const Register = () => {
                     pattern: patternEmail
                 })}
                 label="Ingreser el email"
+                error={errors.email}
             />
             <ErrorsForm error={errors.email}/>
 
@@ -58,6 +64,7 @@ const Register = () => {
                     validate: validateTrim
                 })}
                 label="Ingreser la contraseña"
+                error={errors.password}
             />
             <ErrorsForm error={errors.password}/>
 
@@ -68,9 +75,14 @@ const Register = () => {
                     validate: validateEquals(getValues('password'))})
                 }
                 label="Repita la contraseña"
+                error={errors.password2}
             />
             <ErrorsForm error={errors.password2}/>
-            <Button text='Registro'/>
+            <Button text='Registro' type='submit'/>
+
+            {
+                loading && <LoadingSvg/>
+            }
             
         </form>
     </>
