@@ -18,8 +18,6 @@ const Navbar = () => {
 
     const buttonPurple = 'shadow-lg focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 m-1.5 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900'
 
-    const buttonRed = 'shadow-lg focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 m-1.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900'
-
   return (
     <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
       <div className="container flex flex-wrap items-center justify-between mx-auto">
@@ -32,7 +30,7 @@ const Navbar = () => {
             user ? (
                 <>
                 <NavLink to={'/'} className={buttonPurple}>Inicio</NavLink> 
-                <button onClick={handleClickLogout} className={buttonRed}>Logout</button>
+                <Button onClick={handleClickLogout} color='red' text='Logout'/>
                 </>
             ) : (
               <>

@@ -11,7 +11,7 @@ const UserProvider = (props) => {
     // el onAuthStateChanged es de firebase y me muestra un objeto con la informacion del usuario, va a estar pendiente si el usuario esta o no autenticado
     useEffect(()=>{
       const unsuscribe = onAuthStateChanged(auth, (user) =>{
-        console.log(user)
+        // console.log(user)
         if(user){
           const {email, photoURL, displayName, uid} = user;
           setUser({email, photoURL, displayName, uid});

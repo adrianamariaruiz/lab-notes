@@ -21,9 +21,9 @@ const Login = () => {
   const onSubmit = async (data) => {
     console.log(data.email, data.password)
     try {
+        setLoading(true)
         await loginUser(data.email, data.password)
         console.log('usuario logeado')
-        setLoading(true)
         navegate('/')
     } catch (error) {
         console.log(error.code)
@@ -36,7 +36,6 @@ const Login = () => {
 
   return (
     <>
-    
     <Title text='Inicio de Sesión'/>
     <form onSubmit={handleSubmit(onSubmit)}>
     <InputForm 
@@ -63,10 +62,12 @@ const Login = () => {
     />
     <ErrorsForm error={errors.password}/>
 
-    <Button text='Acceder' type='submit'/>
-    
     {
-        loading && <LoadingSvg/>
+        loading ? (
+            <LoadingSvg/>
+        ) : (
+            <Button text='Acceder' type='submit'/>
+        )
     }
     
     </form>

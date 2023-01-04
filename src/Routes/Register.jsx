@@ -78,10 +78,13 @@ const Register = () => {
                 error={errors.password2}
             />
             <ErrorsForm error={errors.password2}/>
-            <Button text='Registro' type='submit'/>
-
+            
             {
-                loading && <LoadingSvg/>
+                loading ? (
+                <LoadingSvg/>
+                ) : (
+                    <Button text='Registrarse' type='submit'/>
+                )
             }
             
         </form>
