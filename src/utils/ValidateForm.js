@@ -10,6 +10,10 @@ export const ValidateForm = (getValues) => {
             value: /[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/,
             message: 'Formato de email inválido'
         },
+        patternUrl: {
+            value: /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/,
+            message: 'Formato de enlace inválido'
+        },
         minLength: {
             value: 6,
             message: 'Debe tener mínimo 6 caracteres'
